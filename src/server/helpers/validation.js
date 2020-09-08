@@ -3,6 +3,7 @@ const router = require('express').Router();
 const User = require('../Models/user.model')
 const bodyParser = require('body-parser')
 
+
  
 router.post('/register',async(req,res)=>{
     const user = new User({
