@@ -5,34 +5,30 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        max: 100,
+        min:6,
+        max: 255,
     },
     email: {
         type: String,
-        trim: true,
-        lowercase: true,
-        unique: true,
-        required: "Email address is required",
+        required: true,
+        max:255,
+        min:6
         },
     password: {
         type: String,
         required: true,
-        set:(value)=>{
-            return bcrypt.hashSync(value,10)
-        }
+        max:1024,
+        min:6,
+        set: (value) => {
+            return bcrypt.hashSync(value, 10);
+          },
         
       },
-    contact: Number,
-      answers: {
-        type: Array,
-    },
-    questions: {
-        type: Array,
-    },
-    Date:{
-        type:Date,
-        default:Date.now
-    },
+      date:{
+          type:Date,
+          default:Date.now
+      }
+
 })
 
 module.exports = mongoose.model('User',userSchema)

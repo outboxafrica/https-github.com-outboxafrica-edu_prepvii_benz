@@ -9,18 +9,29 @@ const bodyParser = require('body-parser')
 
 const dotenv = require('dotenv')
 
-dotenv.config()
 
 const authRoute = require('./server/helpers/validation')
+const postRoute = require('./server/Routes/posts') 
+
+dotenv.config()
+
+
 app.use(express.json());
 
 
 //Route middleware
 app.use('/api/user', authRoute)
+app.use('/api/posts', postRoute)
 
+app.get('/',(req,res)=>{
+
+  
+  res.send('home')
+})
 app.get('/',(req,res)=>{
   res.send('home')
 })
+
 
 //MIDDLEWARE
 
