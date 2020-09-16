@@ -2,8 +2,8 @@ const router = require('express').Router();
 const verify = require('../helpers/valid');
 
 
-router.get('/',(req,res)=>{
-    res.json({posts:'my first post',description:'random data-dont touch'
+router.get('/',verify,(req,res)=>{
+    res.json({posts:{title:'my first post',description:'i cant describe it'}
 
     })
 
